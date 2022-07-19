@@ -88,7 +88,7 @@ public class PacDaoInt implements PacDao{
 		cn = new Conexion();
 		cn.Open();	
 
-		String query = "INSERT INTO pacientes (DNI,Nombre,Apellido,Sexo,Nacionalidad,FechaNacimiento,Direccion,Localidad,Provincia,CorreoElectronico,Telefono) VALUES ("+paciente.getDni()+",'"+paciente.getNombre()+"','"+paciente.getApellido()+"', '"+paciente.getSexo()+"','"+paciente.getNacionalidad()+"','"+paciente.getFechaNacimiento()+"','"+paciente.getDireccion()+"','"+paciente.getLocalidad()+"','"+paciente.getProvincia()+"','"+paciente.getCorreo()+"',"+paciente.getTelefono()+"')";
+		String query = "INSERT INTO pacientes (DNI,Nombre,Apellido,Sexo,Nacionalidad,FechaNacimiento,Direccion,Localidad,Provincia,CorreoElectronico,Telefono) VALUES ("+paciente.getDni()+",'"+paciente.getNombre()+"','"+paciente.getApellido()+"', '"+paciente.getSexo()+"','"+paciente.getNacionalidad()+"','"+paciente.getFechaNacimiento()+"','"+paciente.getDireccion()+"','"+paciente.getLocalidad()+"','"+paciente.getProvincia()+"','"+paciente.getCorreo()+"',"+paciente.getTelefono()+")";
 		System.out.println(query);
 		try
 		 {

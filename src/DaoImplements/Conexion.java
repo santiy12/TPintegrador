@@ -13,7 +13,7 @@ public class Conexion {
 	private String host = "jdbc:mysql://localhost:3306/";
 	private String user = "root";
 	private String pass = "root";
-	private String dbName = "db_tpintegrador";
+	private String dbName = "bd_tpintegrador";
 
 	 private String url = "jdbc:mysql://localhost:3306/" + dbName + "?user=" + user + "&password=" + pass + "&useSSL=false";
 	

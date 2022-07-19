@@ -18,11 +18,11 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 	    				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-						<li class="nav-item"><a class="nav-link" href="AdminAltaMedico.jsp">Agregar Medico</a></li>
-						<li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Agregar Paciente</a></li>
+						<li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Agregar Medico</a></li>
+						<li class="nav-item"><a class="nav-link" href="AdminAltaPaciente.jsp">Agregar Paciente</a></li>
         					<li class="nav-item"><a class="nav-link" href="AdminTurnos.jsp">Turnos</a></li>
 		    			</ul>
-	        			<span class="navbar-brand">Bienvenido Administrador X</span>
+					<span class="navbar-brand">Bienvenido Administrador X</span>
 					<div class="mx-1">
 		        			<a class="btn btn-success" type="submit" href="Login.jsp">Salir</a>
 					</div>
@@ -30,34 +30,34 @@
        			</div>
 		</nav>
 		<div class="container my-3">
-			<form class="row needs-validation" novalidate>
+			<form class="row needs-validation"  method="get" action="servletPaciente" novalidate>
 				<div class="col-sm-12 col-md-4 mb-3">
 					<div class="form-floating">
-						<input type="text" maxlength="8" class="form-control" id="InputDni" required>
+						<input type="text" maxlength="8" class="form-control" name="InputDni" required>
 						<label for="InputDni">DNI</label>
 						<div class="invalid-tooltip">Ingrese un DNI valido</div>
 					</div>
 				</div>
 				<div class="col-sm-12 col-md-4 mb-3">
 					<div class="form-floating">
-						<input type="text" class="form-control" id="InputNombre" required>
+						<input type="text" class="form-control" name="InputNombre" required>
 						<label for="InputNombre">Nombre</label>
 						<div class="invalid-tooltip">Ingrese un Nombre</div>
 					</div>
 				</div>
 				<div class="col-sm-12 col-md-4 mb-3">
 					<div class="form-floating">
-						<input type="text" class="form-control" id="InputApellido" required>
+						<input type="text" class="form-control" name="InputApellido" required>
 						<label for="InputApellido">Apellido</label>
 						<div class="invalid-tooltip">Ingrese un Apellido</div>
 					</div>
 				</div>
 				<div class="col-sm-12 col-md-4 mb-3">
 					<div class="form-floating">
-						<select class="form-select" id="SelectSexo" placeholder="Sexo" required>
+						<select class="form-select" name="SelectSexo" placeholder="Sexo" required>
 							<option selected disabled value=""></option>
-							<option>Femenino</option>
-							<option>Masculino</option>
+							<option value="Femenino">Femenino</option>
+							<option value="Masculino">Masculino</option>
 						</select>
 						<label for="SelectSexo">Sexo</label>
 						<div class="invalid-tooltip">Elija un Sexo</div>
@@ -65,14 +65,14 @@
 				</div>
 				<div class="col-sm-12 col-md-4 mb-3">
 					<div class="form-floating">
-						<input type="text" class="form-control" id="InputNacionalidad" required>
+						<input type="text" class="form-control" name="InputNacionalidad" required>
 						<label for="InputNacionalidad">Nacionalidad</label>
 						<div class="invalid-tooltip">Elija una Nacionalidad</div>
 					</div>
 				</div>
 				<div class="col-sm-12 col-md-4 mb-3">
 					<div class="form-floating">
-						<input type="date" class="form-control" id="InputNacimiento" required>
+						<input type="date" class="form-control" name="InputNacimiento" required>
 						<label for="InputNacimiento">Nacimiento</label>
 						<div class="invalid-tooltip">Elija una Fecha de Nacimiento</div>
 					</div>
@@ -80,35 +80,35 @@
 				
 				<div class="col-sm-12 col-md-4 mb-3">
 					<div class="form-floating">
-						<input type="text" class="form-control" id="InputProvincia" required>
+						<input type="text" class="form-control" name="InputProvincia" required>
 						<label for="InputProvincia">Provincia</label>
 						<div class="invalid-tooltip">Ingrese una Provincia</div>
 					</div>
 				</div>
 				<div class="col-sm-12 col-md-4 mb-3">
 					<div class="form-floating">
-						<input type="text" class="form-control" id="InputLocalidad" required>
+						<input type="text" class="form-control" name="InputLocalidad" required>
 						<label for="InputLocalidad">Localidad</label>
 						<div class="invalid-tooltip">Ingrese una Localidad</div>
 					</div>
 				</div>
 				<div class="col-sm-12 col-md-4 mb-3">
 					<div class="form-floating">
-						<input type="text" class="form-control" id="InputDireccion" required>
+						<input type="text" class="form-control" name="InputDireccion" required>
 						<label for="InputDireccion">Direccion</label>
 						<div class="invalid-tooltip">Ingrese una Direccion</div>
 					</div>
 				</div>
 				<div class="col-sm-12 col-md-4 mb-3">
 					<div class="form-floating">
-						<input type="email" class="form-control" id="InputEmail" required>
+						<input type="email" class="form-control" name="InputEmail" required>
 						<label for="InputEmail">Correo Electronico</label>
 						<div class="invalid-tooltip">Ingrese un Correo valido</div>
 					</div>
 				</div>
 				<div class="col-sm-12 col-md-4 mb-3">
 					<div class="form-floating">
-						<input type="text" maxlength="8" class="form-control" id="InputTelefono" required>
+						<input type="text" maxlength="8" class="form-control" name="InputTelefono" required>
 						<label for="InputTelefono">Telefono</label>
 						<div class="invalid-tooltip">Ingrese un Numero de Telefono</div>
 					</div>
@@ -116,7 +116,7 @@
 				<div class="col-sm-12 col-md-4 mb-3">
 				</div>
 				<div class="col-12 mb-3">
-					<button class="btn btn-success" type="submit">Agregar Paciente</button>
+					<button class="btn btn-success" name="btnAgregar" value="agregar" type="submit">Agregar Paciente</button>
 				</div>
 			</form>
 		</div>

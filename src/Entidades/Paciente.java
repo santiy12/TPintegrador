@@ -1,6 +1,7 @@
 package Entidades;
 
 public class Paciente {
+
 	private int Dni;
 	private String Nombre;
 	private String Apellido;
@@ -78,5 +79,13 @@ public class Paciente {
 	}
 	public void setTelefono(int telefono) {
 		Telefono = telefono;
+	}
+	
+	@Override
+	public String toString() {
+		return "Paciente [Dni=" + Dni + ", Nombre=" + Nombre + ", Apellido=" + Apellido + ", Sexo=" + Sexo
+				+ ", Nacionalidad=" + Nacionalidad + ", FechaNacimiento=" + FechaNacimiento + ", Direccion=" + Direccion
+				+ ", Localidad=" + Localidad + ", Provincia=" + Provincia + ", Correo=" + Correo + ", Telefono="
+				+ Telefono + "]";
 	}
 }
