@@ -18,7 +18,7 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 	    				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-						<li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Agregar Medico</a></li>
+						<li class="nav-item"><a class="nav-link active" href="AdminAltaMedico.jsp" >Agregar Medico</a></li>
 						<li class="nav-item"><a class="nav-link" href="AdminAltaPaciente.jsp">Agregar Paciente</a></li>
         					<li class="nav-item"><a class="nav-link" href="AdminTurnos.jsp">Turnos</a></li>
 		    			</ul>
@@ -28,7 +28,12 @@
 					</div>
 				</div>
        			</div>
+       			
 		</nav>
+			<div class="container-fluid">
+	    			<a href="servletPaciente?Param=MostrarLista"  >Mostrar Lista</a>
+	    			
+       			</div>
 		<div class="container my-3">
 			<form class="row needs-validation"  method="get" action="servletPaciente" novalidate>
 				<div class="col-sm-12 col-md-4 mb-3">
@@ -120,6 +125,24 @@
 				</div>
 			</form>
 		</div>
+		<% String repuesta= "";
+			if(request.getAttribute("registro") != null){
+				repuesta = request.getAttribute("registro").toString();
+				if(repuesta.equals("0")){
+					%>
+					El paciente YA existe
+					<%
+				}
+				else if(repuesta.equals("true")){
+					%>
+					Paciente Agregado correctamente
+					<%
+				}
+			}
+								
+								
+								%>
+		
 		<script>
 		(() => {
   			'use strict'

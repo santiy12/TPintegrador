@@ -1,13 +1,17 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.sun.corba.se.spi.protocol.RequestDispatcherRegistry;
 
 import Entidades.Paciente;
 import Negocio.PacNeg;
@@ -25,7 +29,8 @@ public class servletPaciente extends HttpServlet {
      */
     public servletPaciente() {
         super();
-        // TODO Auto-generated constructor stub
+      //System.out.println("entro aca"); 
+ 
     }
 
 	/**
@@ -33,7 +38,22 @@ public class servletPaciente extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		//System.out.println("entro aca"); 
+		
+		if (request.getParameter("Param").equals("MostrarLista")) {
+			System.out.println("if param mostrar lista");
+			PacNegInt pacneg = new PacNegInt();
+			ArrayList<Paciente> list =  (ArrayList<Paciente>) pacneg.obtenerTodos();
+			
+			
+			request.setAttribute("ListaPacientes", list);
 
+			RequestDispatcher rd = request.getRequestDispatcher("/VerPacientes.jsp");
+
+			rd.forward(request, response);
+			
+		}
+		
 		if(request.getParameter("btnAgregar")!= null) {
 			
 			Paciente paci = new Paciente();
@@ -51,8 +71,20 @@ public class servletPaciente extends HttpServlet {
 			paci.setTelefono(Integer.parseInt(request.getParameter("InputTelefono")));
 			
 			PacNegInt pacneg = new PacNegInt();
+			Paciente pacAux = new Paciente();
 		
-			pacneg.insertar(paci);
+			 pacAux = pacneg.obtenerUno(paci.getDni());
+			 int Dni = pacAux.getDni();
+			if (Dni == paci.getDni()) {
+				request.setAttribute("registro", 0);
+				System.out.println("paciente ya existe");
+			}
+			else {
+				request.setAttribute("registro", pacneg.insertar(paci)); 
+			}
+			RequestDispatcher rd = request.getRequestDispatcher("/AdminAltaPaciente.jsp");
+			rd.forward(request, response); 
+
 			//System.out.println(paci.toString()); 
 		}
 	}
@@ -61,8 +93,33 @@ public class servletPaciente extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+	
+		if(request.getParameter("btnEliminar")!= null) {
+			Paciente paci = new Paciente();
+			
+			paci.setDni(Integer.parseInt(request.getParameter("DniPaciente")));
+			
+			PacNegInt pacneg = new PacNegInt();
+			if(pacneg.borrar(paci.getDni())) {
+				request.setAttribute("Elimino", 1);
+				System.out.println("paciente eliminado");
+				
+			}
+			else {
+				request.setAttribute("Elimino",0);
+				System.out.println("error al Eliminar paciente");
+			}
+			
+			ArrayList<Paciente> list =  (ArrayList<Paciente>) pacneg.obtenerTodos();
+			
+			
+			request.setAttribute("ListaPacientes", list);
+
+			RequestDispatcher rd = request.getRequestDispatcher("/VerPacientes.jsp");
+			rd.forward(request, response); 
+		}
+		
+		
 	}
 
 }
