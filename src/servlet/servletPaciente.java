@@ -114,6 +114,8 @@ public class servletPaciente extends HttpServlet {
 			
 			
 			request.setAttribute("ListaPacientes", list);
+			
+			
 
 			RequestDispatcher rd = request.getRequestDispatcher("/VerPacientes.jsp");
 			rd.forward(request, response); 
